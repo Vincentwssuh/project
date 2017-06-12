@@ -10,6 +10,7 @@ public class BoardAddAction implements Action {
 	public ActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		request.setCharacterEncoding("utf-8");
 		
+		System.out.println("boardAddAction");
 		BoardDAO dao = BoardDAO.getInstance();
 		BoardDTO dto = new BoardDTO();
 		

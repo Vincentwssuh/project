@@ -1,54 +1,55 @@
---회원가입
-CREATE TABLE board_join (
-	id VARCHAR2(20) constraint PK_board_join primary key, /* ���̵� */
-	passwd VARCHAR2(20) NOT NULL, /* ��й�ȣ */
-	email VARCHAR2(20) NOT NULL, /* �̸��� */
-	name VARCHAR2(20) NOT NULL, /* �̸� */
-	nick VARCHAR2(20), /* �г��� */
-	phone VARCHAR2(20) NOT NULL, /* ��ȭ��ȣ */
-	portrait VARCHAR2(20), /* �ʻ�ȭ */
-	grade VARCHAR2(20), /* ��� */
-	major VARCHAR2(20) /* Ȱ���о� */
-);
-
-drop table board_join purge;
-
-
---게시판
-create table board(
-  id varchar2(20) constraint FK_board_join references board_join, /* board_join���̺� id�� ���� */
-  no number(20) constraint PK_board primary key,
-  content varchar2(2000) not null,
-  readcount varchar2(20),
-  file_upload varchar2(20),
-  nick varchar2(20) not null,
-  section varchar2(20),
-  write_date varchar2(20)
-);
-
-drop table board purge;
-
-
-
-/* ��� */
-CREATE TABLE reply (
-	id VARCHAR2(20) not null, /* ���̵� */
-	no NUMBER(20) constraint FK_board references board(no), /* no */
-	reply VARCHAR2(200), /* ��� */
-	nick VARCHAR2(20), /* �г��� */
-	re_ref VARCHAR2(20), /* ref */
-	re_step VARCHAR2(20), /* step */
-	re_level VARCHAR2(20) /* level */
-);
-
-
-/* ��õ */
-CREATE TABLE good_bad (
-	id VARCHAR2(20) NOT NULL, /* ���̵� */
-	no NUMBER(20) constraint good_bad_board_FK references board(no), /* no */
-	good VARCHAR2(20), /* ��õ */
-	bad VARCHAR2(20) /* ����õ */
-);
-
+select * from seq;
 select * from tab;
+--ȸ������
+create table memberinfo(
+  id varchar2(20) primary key,
+  passwd varchar2(20) not null,
+  name varchar2(20) not null,
+  phone varchar2(30) not null,
+  email varchar2(50) not null,
+  nickname varchar2(30) not null,
+  reg_date date not null
+);
 
+select * from memberinfo;
+
+insert into memberinfo values('test','test','test','test','test','test',sysdate);
+
+--�Խ���
+create table board(
+  id varchar2(20) REFERENCES memberinfo(id),
+  no number PRIMARY key,
+  subject varchar2(50) not null,
+  content varchar2(2000) not null,
+  ip varchar2(30) not null,
+  readcount number default 0,
+  file_name varchar2(50),
+  nickname varchar2(30),
+  section varchar2(30) CHECK(section in('java', 'jsp', 'javascript', 'oracle', 'html', 'css')),
+  wirte_date date not null
+);
+
+
+alter table board add(
+good number default 0,
+bad number degault 0
+);
+
+
+create SEQUENCE seq_board_no
+INCREMENT BY 1
+START WITH 1;
+
+
+insert into board values(
+  'test',
+  seq_board_no.nextval,
+  'test',
+  'test',
+  '0',
+  0,
+  'test.jpg',
+  'test',
+  'test',
+  sysdate
+);

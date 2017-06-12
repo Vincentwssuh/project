@@ -3,14 +3,14 @@ package net.board.db;
 public class BoardDTO {
 	private String id;
 	private String passwd;
-	private String email;
 	private String name;
-	private String nickname;
 	private String phone;
+	private String email;
+	private String nickname;
 	private String portrait;
 	private String grade;
 	private String major;
-	
+
 	
 	public String getId() {
 		return id;

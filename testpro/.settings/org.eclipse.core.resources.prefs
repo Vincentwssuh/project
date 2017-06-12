@@ -1,3 +1,4 @@
 eclipse.preferences.version=1
-encoding//WebContent/SQL/testsql.sql=UTF-8
+encoding//WebContent/SQL/testsql.sql=euc-kr
 encoding//src/controller/BoardFrontController.java=UTF-8
+encoding/<project>=UTF-8

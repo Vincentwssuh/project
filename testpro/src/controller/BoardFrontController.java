@@ -35,7 +35,6 @@ public class BoardFrontController extends HttpServlet {
 		Action action = null;
 		ActionForward forward = null;
 		
-		//�쉶�썝媛��엯
 		if(command.equals("/BoardAddAction.do")){
 			try {
 				action = new BoardAddAction();
@@ -44,7 +43,6 @@ public class BoardFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		
-		//濡쒓렇�씤	////1
 		}else if(command.equals("/BoardLogin.do")){
 			try {
 				action = new BoardLogin();
@@ -53,7 +51,6 @@ public class BoardFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-		//濡쒓렇�븘�썐	
 		}else if(command.equals("/Logout.do")){
 			try {
 				action = new Logout();
@@ -62,7 +59,6 @@ public class BoardFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		
-		//�쉶�썝�젙蹂� 援ы븿	
 		}else if(command.equals("/MemberFind.do")){
 			try{
 				action = new MemberFind();
@@ -71,7 +67,6 @@ public class BoardFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-		//�쉶�썝�젙蹂� �닔�젙	
 		}else if(command.equals("/MemberUpdate.do")){
 			try {
 				action = new MemberUpdate();
@@ -79,9 +74,31 @@ public class BoardFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		} else if (command.equals("/menu1.do")){
+			try{
+				action = new MemberUpdate();
+			} catch (Exception e){
+				e.printStackTrace();
+			}
+		}else if (command.equals("/menu2.do")){
+			try{
+				action = new MemberUpdate();
+			} catch (Exception e){
+				e.printStackTrace();
+			}
+		}else if (command.equals("/menu3.do")){
+			try{
+				action = new MemberUpdate();
+			} catch (Exception e){
+				e.printStackTrace();
+			}
+		}else if (command.equals("/menu4.do")){
+			try{
+				action = new MemberUpdate();
+			} catch (Exception e){
+				e.printStackTrace();
+			}
 		}
-		
-		
 		
 		
 		//forwarding
